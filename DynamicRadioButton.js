@@ -26,16 +26,20 @@ const App = ()=> {
   const[selectedRadioColor,setSelectedRadioColor] = useState(1)
     return(
       <View style={styles.main}>
-        <TouchableOpacity onPress={()=>setSelectedRadioColor(1)}>
+        {
+          skills.map((item,index)=> <TouchableOpacity
+          key ={index}
+          onPress={()=>setSelectedRadioColor(item.id)}>
           <View style={styles.radioWrapper}>
             <View style={styles.radio}>
               {
-                selectedRadioColor===1?<View style={styles.radioBg}></View>:null
+                selectedRadioColor===item.id?<View style={styles.radioBg}></View>:null
               }
             </View>
-            <Text style={styles.radioText}>Radio1</Text>  
+            <Text style={styles.radioText}>{item.name}</Text>  
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity>)
+        }
 
        
      </View>
@@ -80,3 +84,4 @@ const styles = StyleSheet.create({
 
 
 export default App;
+
